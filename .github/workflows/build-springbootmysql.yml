@@ -36,11 +36,10 @@ jobs:
 
     - name: Deploy to Heroku
       env:
-        HEROKU_API_KEY: ${{ secrets.HRKU-e93eb3f7-fe6f-4888-bffe-d5fcccaec989 }}
+        HEROKU_API_KEY: "HRKU-e93eb3f7-fe6f-4888-bffe-d5fcccaec989"
         HEROKU_APP_NAME: "SpringBootMysql"
       run: |
-        heroku login --interactive
-        heroku create $HEROKU_APP_NAME
+        echo $HEROKU_API_KEY | heroku auth:token
         heroku container:login
         heroku container:push web -a $HEROKU_APP_NAME
         heroku container:release web -a $HEROKU_APP_NAME
