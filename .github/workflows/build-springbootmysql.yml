@@ -31,15 +31,19 @@ jobs:
       run: mvn install -DskipTests
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: Install Heroku CLI
-      run: curl https://cli-assets.heroku.com/install.sh | sh
 
-    - name: Deploy to Heroku
-      env:
-        HEROKU_API_KEY: "HRKU-e93eb3f7-fe6f-4888-bffe-d5fcccaec989"
-        HEROKU_APP_NAME: "SpringBootMysql"
-      run: |
-        echo $HEROKU_API_KEY | heroku auth:token
-        heroku container:login
-        heroku container:push web -a $HEROKU_APP_NAME
-        heroku container:release web -a $HEROKU_APP_NAME
+
+#once you get Heroku payment then we can use for deployment
+
+    # - name: Install Heroku CLI
+    #   run: curl https://cli-assets.heroku.com/install.sh | sh
+
+    # - name: Deploy to Heroku
+    #   env:
+    #     HEROKU_API_KEY: ${{secerets.HEROKU_API_KEY}}
+    #     HEROKU_APP_NAME: "for-github-action"
+    #   run: |
+    #     echo $HEROKU_API_KEY | heroku auth:token
+    #     heroku container:login
+    #     heroku container:push web -a $HEROKU_APP_NAME
+    #     heroku container:release web -a $HEROKU_APP_NAME
